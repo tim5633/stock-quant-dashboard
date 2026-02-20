@@ -1,5 +1,5 @@
 {
-  "run_id": "13eed7780b9448dab7fb2dc4a92ddabf",
+  "run_id": "8708947734114fb38bcb3b8c127b36b3",
   "timezone": "Asia/Taipei",
   "details": {
     "price_rows": 68,
@@ -34,7 +34,11 @@
       "symbol": "AAPL",
       "trade_date": "2026-02-20",
       "close": 264.58,
-      "score": 38,
+      "sma_60": 262.2955,
+      "sma_200": 264.5059,
+      "mom_60d": -0.044734,
+      "dist_52w_high": -0.075509,
+      "score": 30,
       "signal": "SELL",
       "source": "yahoo"
     },
@@ -42,6 +46,10 @@
       "symbol": "MSFT",
       "trade_date": "2026-02-20",
       "close": 397.23,
+      "sma_60": 450.1553,
+      "sma_200": 464.9963,
+      "mom_60d": -0.167215,
+      "dist_52w_high": -0.267198,
       "score": 0,
       "signal": "SELL",
       "source": "yahoo"
@@ -52,7 +60,11 @@
       "symbol": "AAPL",
       "trade_date": "2026-02-20",
       "close": 264.58,
-      "score": 72,
+      "sma_20": 257.267,
+      "sma_60": 262.2955,
+      "mom_20d": 0.066683,
+      "mom_5d": 0.034405,
+      "score": 78,
       "signal": "BUY",
       "source": "yahoo"
     },
@@ -60,7 +72,11 @@
       "symbol": "MSFT",
       "trade_date": "2026-02-20",
       "close": 397.23,
-      "score": 11,
+      "sma_20": 408.541,
+      "sma_60": 450.1553,
+      "mom_20d": -0.147484,
+      "mom_5d": -0.010191,
+      "score": 0,
       "signal": "SELL",
       "source": "yahoo"
     }
@@ -70,7 +86,11 @@
       "symbol": "AAPL",
       "trade_date": "2026-02-20",
       "close": 264.58,
-      "score": 63,
+      "sma_5": 229.228,
+      "mom_1d": 0.01535,
+      "mom_5d": 0.034405,
+      "vol_10d": 0.63852,
+      "score": 0,
       "signal": "BUY",
       "source": "yahoo"
     },
@@ -78,12 +98,24 @@
       "symbol": "MSFT",
       "trade_date": "2026-02-20",
       "close": 397.23,
-      "score": 36,
+      "sma_5": 359.312,
+      "mom_1d": -0.003087,
+      "mom_5d": -0.010191,
+      "vol_10d": 0.350862,
+      "score": 0,
       "signal": "SELL",
       "source": "yahoo"
     }
   ],
   "recent_runs": [
+    {
+      "run_id": "8708947734114fb38bcb3b8c127b36b3",
+      "started_at": "2026-02-20T23:30:12.152701",
+      "finished_at": "2026-02-20T23:30:12.614337",
+      "status": "SUCCESS",
+      "rows_written": 138,
+      "error_message": null
+    },
     {
       "run_id": "13eed7780b9448dab7fb2dc4a92ddabf",
       "started_at": "2026-02-20T23:16:47.474469",

@@ -79,6 +79,10 @@
             <th>Symbol</th>
             <th>Date</th>
             <th>Close</th>
+            <th>SMA60</th>
+            <th>SMA200</th>
+            <th>MOM60D</th>
+            <th>Dist52W High</th>
             <th>Score</th>
             <th>Signal</th>
             <th>Source</th>
@@ -94,6 +98,10 @@
             <th>Symbol</th>
             <th>Date</th>
             <th>Close</th>
+            <th>SMA20</th>
+            <th>SMA60</th>
+            <th>MOM20D</th>
+            <th>MOM5D</th>
             <th>Score</th>
             <th>Signal</th>
             <th>Source</th>
@@ -109,6 +117,10 @@
             <th>Symbol</th>
             <th>Date</th>
             <th>Close</th>
+            <th>SMA5</th>
+            <th>MOM1D</th>
+            <th>MOM5D</th>
+            <th>VOL10D</th>
             <th>Score</th>
             <th>Signal</th>
             <th>Source</th>
@@ -137,23 +149,64 @@
     </div>
 
     <script>
-      const fmt = (v) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(v);
+      const fmt = (v) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(v ?? 0);
+      const pct = (v) => `${new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format((v ?? 0) * 100)}%`;
 
-      function renderHorizonRows(rows, bodyId) {
-        const body = document.getElementById(bodyId);
-        body.innerHTML = (rows || [])
-          .map((r) => {
-            const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
-            return `<tr>
-              <td>${r.symbol}</td>
-              <td>${r.trade_date}</td>
-              <td>${fmt(r.close)}</td>
-              <td>${r.score}</td>
-              <td class="${signalClass}">${r.signal}</td>
-              <td>${r.source || "-"}</td>
-            </tr>`;
-          })
-          .join("");
+      function renderLong(rows) {
+        const body = document.getElementById("long-body");
+        body.innerHTML = (rows || []).map((r) => {
+          const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
+          return `<tr>
+            <td>${r.symbol}</td>
+            <td>${r.trade_date}</td>
+            <td>${fmt(r.close)}</td>
+            <td>${fmt(r.sma_60)}</td>
+            <td>${fmt(r.sma_200)}</td>
+            <td>${pct(r.mom_60d)}</td>
+            <td>${pct(r.dist_52w_high)}</td>
+            <td>${r.score}</td>
+            <td class="${signalClass}">${r.signal}</td>
+            <td>${r.source || "-"}</td>
+          </tr>`;
+        }).join("");
+      }
+
+      function renderMid(rows) {
+        const body = document.getElementById("mid-body");
+        body.innerHTML = (rows || []).map((r) => {
+          const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
+          return `<tr>
+            <td>${r.symbol}</td>
+            <td>${r.trade_date}</td>
+            <td>${fmt(r.close)}</td>
+            <td>${fmt(r.sma_20)}</td>
+            <td>${fmt(r.sma_60)}</td>
+            <td>${pct(r.mom_20d)}</td>
+            <td>${pct(r.mom_5d)}</td>
+            <td>${r.score}</td>
+            <td class="${signalClass}">${r.signal}</td>
+            <td>${r.source || "-"}</td>
+          </tr>`;
+        }).join("");
+      }
+
+      function renderShort(rows) {
+        const body = document.getElementById("short-body");
+        body.innerHTML = (rows || []).map((r) => {
+          const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
+          return `<tr>
+            <td>${r.symbol}</td>
+            <td>${r.trade_date}</td>
+            <td>${fmt(r.close)}</td>
+            <td>${fmt(r.sma_5)}</td>
+            <td>${pct(r.mom_1d)}</td>
+            <td>${pct(r.mom_5d)}</td>
+            <td>${pct(r.vol_10d)}</td>
+            <td>${r.score}</td>
+            <td class="${signalClass}">${r.signal}</td>
+            <td>${r.source || "-"}</td>
+          </tr>`;
+        }).join("");
       }
 
       async function load() {
@@ -179,9 +232,9 @@
             .map((c) => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`)
             .join("");
 
-          renderHorizonRows(data.long_term, "long-body");
-          renderHorizonRows(data.mid_term, "mid-body");
-          renderHorizonRows(data.short_term, "short-body");
+          renderLong(data.long_term);
+          renderMid(data.mid_term);
+          renderShort(data.short_term);
 
           const runsBody = document.getElementById("runs-body");
           runsBody.innerHTML = (data.recent_runs || [])
