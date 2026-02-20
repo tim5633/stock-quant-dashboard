@@ -48,6 +48,7 @@ def fetch_market_data(symbols: list[str], lookback_days: int) -> list[dict]:
 
     for symbol in symbols:
         df = pd.DataFrame()
+        provider = "yahoo"
         try:
             df = _fetch_yahoo(symbol, start_date, end_date)
         except Exception:
@@ -55,6 +56,7 @@ def fetch_market_data(symbols: list[str], lookback_days: int) -> list[dict]:
 
         if df is None or df.empty:
             logger.warning("No Yahoo data for symbol=%s, fallback to Stooq", symbol)
+            provider = "stooq"
             try:
                 df = _fetch_stooq(symbol)
             except Exception:
@@ -107,6 +109,7 @@ def fetch_market_data(symbols: list[str], lookback_days: int) -> list[dict]:
                     "low": round(float(row["low"]), 2),
                     "close": round(float(row["close"]), 2),
                     "volume": int(row["volume"]),
+                    "source": provider,
                 }
             )
 

@@ -22,6 +22,19 @@ from quant_dashboard.jobs.update_dashboard import refresh_dashboard_snapshot
 logger = logging.getLogger(__name__)
 
 
+def _latest_source_by_symbol(price_rows: list[dict]) -> dict[str, str]:
+    latest: dict[str, tuple] = {}
+    for row in price_rows:
+        symbol = row.get("symbol")
+        trade_date = row.get("trade_date")
+        source = row.get("source")
+        if not symbol or not trade_date or not source:
+            continue
+        if symbol not in latest or trade_date > latest[symbol][0]:
+            latest[symbol] = (trade_date, source)
+    return {symbol: value[1] for symbol, value in latest.items()}
+
+
 def run_pipeline(config: AppConfig) -> str:
     engine = create_db_engine(config.database_url)
     init_db(engine)
@@ -50,6 +63,7 @@ def run_pipeline(config: AppConfig) -> str:
             details = {
                 "price_rows": price_rows,
                 "metric_rows": metric_rows,
+                "source_by_symbol": _latest_source_by_symbol(prices),
                 **snapshot_result,
             }
             record_run_finished(

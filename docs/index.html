@@ -82,6 +82,7 @@
             <th>SMA(5)</th>
             <th>Momentum(5d)</th>
             <th>Signal</th>
+            <th>Source</th>
           </tr>
         </thead>
         <tbody id="latest-body"></tbody>
@@ -136,6 +137,7 @@
           latestBody.innerHTML = (data.latest_metrics || [])
             .map((r) => {
               const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
+              const source = data.details?.source_by_symbol?.[r.symbol] || "-";
               return `<tr>
                 <td>${r.symbol}</td>
                 <td>${r.trade_date}</td>
@@ -143,6 +145,7 @@
                 <td>${fmt(r.sma_5)}</td>
                 <td>${fmt(r.momentum_5d)}</td>
                 <td class="${signalClass}">${r.signal}</td>
+                <td>${source}</td>
               </tr>`;
             })
             .join("");

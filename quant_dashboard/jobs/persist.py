@@ -11,7 +11,11 @@ def _upsert_rows(session: Session, table, rows: list[dict], engine: Engine) -> i
         return 0
 
     now = utcnow()
-    enriched_rows = [{**row, "updated_at": now} for row in rows]
+    valid_cols = {c.name for c in table.columns}
+    enriched_rows = [
+        {k: v for k, v in {**row, "updated_at": now}.items() if k in valid_cols}
+        for row in rows
+    ]
     dialect = engine.dialect.name
     pk_cols = [col.name for col in table.primary_key.columns]
     update_cols = [c.name for c in table.columns if c.name not in pk_cols]
