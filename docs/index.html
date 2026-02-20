@@ -72,20 +72,49 @@
 
       <div class="grid" id="summary"></div>
 
-      <div class="section-title">最新訊號</div>
+      <div class="section-title">長期表（3-12 個月）</div>
       <table>
         <thead>
           <tr>
             <th>Symbol</th>
             <th>Date</th>
             <th>Close</th>
-            <th>SMA(5)</th>
-            <th>Momentum(5d)</th>
+            <th>Score</th>
             <th>Signal</th>
             <th>Source</th>
           </tr>
         </thead>
-        <tbody id="latest-body"></tbody>
+        <tbody id="long-body"></tbody>
+      </table>
+
+      <div class="section-title">中期表（1-8 週）</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Close</th>
+            <th>Score</th>
+            <th>Signal</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="mid-body"></tbody>
+      </table>
+
+      <div class="section-title">短期表（1-10 天）</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Close</th>
+            <th>Score</th>
+            <th>Signal</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="short-body"></tbody>
       </table>
 
       <div class="section-title">最近執行</div>
@@ -110,6 +139,23 @@
     <script>
       const fmt = (v) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 4 }).format(v);
 
+      function renderHorizonRows(rows, bodyId) {
+        const body = document.getElementById(bodyId);
+        body.innerHTML = (rows || [])
+          .map((r) => {
+            const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
+            return `<tr>
+              <td>${r.symbol}</td>
+              <td>${r.trade_date}</td>
+              <td>${fmt(r.close)}</td>
+              <td>${r.score}</td>
+              <td class="${signalClass}">${r.signal}</td>
+              <td>${r.source || "-"}</td>
+            </tr>`;
+          })
+          .join("");
+      }
+
       async function load() {
         try {
           const res = await fetch("./data/latest.json", { cache: "no-store" });
@@ -125,7 +171,7 @@
           const summary = document.getElementById("summary");
           const cards = [
             { label: "Run ID", value: data.run_id || "-" },
-            { label: "Symbols", value: (data.latest_metrics || []).length },
+            { label: "Symbols", value: (data.short_term || []).length },
             { label: "Rows Written", value: data.details?.price_rows + data.details?.metric_rows || 0 },
             { label: "Status", value: run?.status || "-" },
           ];
@@ -133,22 +179,9 @@
             .map((c) => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`)
             .join("");
 
-          const latestBody = document.getElementById("latest-body");
-          latestBody.innerHTML = (data.latest_metrics || [])
-            .map((r) => {
-              const signalClass = String(r.signal).toLowerCase() === "buy" ? "buy" : "sell";
-              const source = data.details?.source_by_symbol?.[r.symbol] || "-";
-              return `<tr>
-                <td>${r.symbol}</td>
-                <td>${r.trade_date}</td>
-                <td>${fmt(r.close)}</td>
-                <td>${fmt(r.sma_5)}</td>
-                <td>${fmt(r.momentum_5d)}</td>
-                <td class="${signalClass}">${r.signal}</td>
-                <td>${source}</td>
-              </tr>`;
-            })
-            .join("");
+          renderHorizonRows(data.long_term, "long-body");
+          renderHorizonRows(data.mid_term, "mid-body");
+          renderHorizonRows(data.short_term, "short-body");
 
           const runsBody = document.getElementById("runs-body");
           runsBody.innerHTML = (data.recent_runs || [])

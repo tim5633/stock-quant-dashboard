@@ -1,5 +1,5 @@
 {
-  "run_id": "a371a79dc07848eb99b62e2253e58ec9",
+  "run_id": "13eed7780b9448dab7fb2dc4a92ddabf",
   "timezone": "Asia/Taipei",
   "details": {
     "price_rows": 68,
@@ -15,21 +15,83 @@
     {
       "symbol": "AAPL",
       "trade_date": "2026-02-20",
-      "close": 264.08,
-      "sma_5": 261.734,
-      "momentum_5d": 0.008979,
+      "close": 264.58,
+      "sma_5": 261.834,
+      "momentum_5d": 0.010889,
       "signal": "BUY"
     },
     {
       "symbol": "MSFT",
       "trade_date": "2026-02-20",
-      "close": 397.78,
-      "sma_5": 398.804,
-      "momentum_5d": -0.010104,
+      "close": 397.23,
+      "sma_5": 398.694,
+      "momentum_5d": -0.011472,
       "signal": "SELL"
     }
   ],
+  "long_term": [
+    {
+      "symbol": "AAPL",
+      "trade_date": "2026-02-20",
+      "close": 264.58,
+      "score": 38,
+      "signal": "SELL",
+      "source": "yahoo"
+    },
+    {
+      "symbol": "MSFT",
+      "trade_date": "2026-02-20",
+      "close": 397.23,
+      "score": 0,
+      "signal": "SELL",
+      "source": "yahoo"
+    }
+  ],
+  "mid_term": [
+    {
+      "symbol": "AAPL",
+      "trade_date": "2026-02-20",
+      "close": 264.58,
+      "score": 72,
+      "signal": "BUY",
+      "source": "yahoo"
+    },
+    {
+      "symbol": "MSFT",
+      "trade_date": "2026-02-20",
+      "close": 397.23,
+      "score": 11,
+      "signal": "SELL",
+      "source": "yahoo"
+    }
+  ],
+  "short_term": [
+    {
+      "symbol": "AAPL",
+      "trade_date": "2026-02-20",
+      "close": 264.58,
+      "score": 63,
+      "signal": "BUY",
+      "source": "yahoo"
+    },
+    {
+      "symbol": "MSFT",
+      "trade_date": "2026-02-20",
+      "close": 397.23,
+      "score": 36,
+      "signal": "SELL",
+      "source": "yahoo"
+    }
+  ],
   "recent_runs": [
+    {
+      "run_id": "13eed7780b9448dab7fb2dc4a92ddabf",
+      "started_at": "2026-02-20T23:16:47.474469",
+      "finished_at": "2026-02-20T23:16:47.920828",
+      "status": "SUCCESS",
+      "rows_written": 138,
+      "error_message": null
+    },
     {
       "run_id": "a371a79dc07848eb99b62e2253e58ec9",
       "started_at": "2026-02-20T18:34:25.445197",
