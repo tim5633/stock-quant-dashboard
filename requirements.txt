@@ -3,3 +3,4 @@ PyYAML==6.0.2
 SQLAlchemy==2.0.38
 pandas==2.2.3
 python-dotenv==1.0.1
+yfinance==0.2.54

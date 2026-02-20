@@ -36,6 +36,8 @@ def run_pipeline(config: AppConfig) -> str:
 
         try:
             prices = fetch_market_data(config.symbols, config.lookback_days)
+            if not prices:
+                raise RuntimeError("No market data fetched from providers")
             metrics = compute_quant_metrics(prices)
 
             price_rows = persist_price_data(session, prices, engine=engine)

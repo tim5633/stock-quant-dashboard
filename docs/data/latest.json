@@ -1,9 +1,9 @@
 {
-  "run_id": "75beb2f447264c51a94ce860450bae8f",
+  "run_id": "d7bae7cf50144f6aa8c2c844c03957d1",
   "timezone": "Asia/Taipei",
   "details": {
-    "price_rows": 60,
-    "metric_rows": 60,
+    "price_rows": 68,
+    "metric_rows": 68,
     "snapshot_rows": 2,
     "deleted_old_snapshots": 0
   },
@@ -11,21 +11,45 @@
     {
       "symbol": "AAPL",
       "trade_date": "2026-02-20",
-      "close": 97.83,
-      "sma_5": 94.766,
-      "momentum_5d": 0.072227,
+      "close": 263.79,
+      "sma_5": 261.676,
+      "momentum_5d": 0.007871,
       "signal": "BUY"
     },
     {
       "symbol": "MSFT",
       "trade_date": "2026-02-20",
-      "close": 216.96,
-      "sma_5": 210.298,
-      "momentum_5d": 0.031277,
-      "signal": "BUY"
+      "close": 397.37,
+      "sma_5": 398.722,
+      "momentum_5d": -0.011124,
+      "signal": "SELL"
     }
   ],
   "recent_runs": [
+    {
+      "run_id": "d7bae7cf50144f6aa8c2c844c03957d1",
+      "started_at": "2026-02-20T18:31:45.766010",
+      "finished_at": "2026-02-20T18:31:46.223445",
+      "status": "SUCCESS",
+      "rows_written": 138,
+      "error_message": null
+    },
+    {
+      "run_id": "65535e8ec74a497cb7f8960b68f7d4d1",
+      "started_at": "2026-02-20T18:31:24.765556",
+      "finished_at": "2026-02-20T18:31:27.477717",
+      "status": "SUCCESS",
+      "rows_written": 322,
+      "error_message": null
+    },
+    {
+      "run_id": "d0b64f35aebc4ea582b1b879af87635e",
+      "started_at": "2026-02-20T18:30:48.962381",
+      "finished_at": "2026-02-20T18:30:50.868805",
+      "status": "SUCCESS",
+      "rows_written": 2,
+      "error_message": null
+    },
     {
       "run_id": "75beb2f447264c51a94ce860450bae8f",
       "started_at": "2026-02-20T16:37:46.390683",

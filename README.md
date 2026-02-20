@@ -8,6 +8,7 @@ Python 自動化更新量化資料，並把結果發布到 GitHub Pages。
 - `SQLite`：本地 SQL 資料庫（`data/quant.db`）
 - `docs/`：GitHub Pages 靜態前端
 - `GitHub Actions`：定時執行 pipeline 並部署 Pages
+- 市場資料來源：Yahoo Finance（`yfinance`）
 
 ## 本地啟動
 
@@ -42,6 +43,6 @@ python main.py --once
 
 ## 之後可做
 
-1. 把 `quant_dashboard/jobs/fetch_data.py` 的 mock 換成真實行情 API
-2. 在 `quant_dashboard/jobs/run_quant.py` 加入更多因子與策略
-3. 在 `docs/index.html` 加上圖表與篩選
+1. 在 `quant_dashboard/jobs/run_quant.py` 加入更多因子與策略
+2. 在 `docs/index.html` 加上圖表與篩選
+3. 若要多人長期保存，改為 PostgreSQL（Supabase / Neon）
