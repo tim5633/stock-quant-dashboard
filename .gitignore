@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+quant_dashboard.db
+data/quant.db

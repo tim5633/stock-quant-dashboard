@@ -1,0 +1,38 @@
+{
+  "run_id": "75beb2f447264c51a94ce860450bae8f",
+  "timezone": "Asia/Taipei",
+  "details": {
+    "price_rows": 60,
+    "metric_rows": 60,
+    "snapshot_rows": 2,
+    "deleted_old_snapshots": 0
+  },
+  "latest_metrics": [
+    {
+      "symbol": "AAPL",
+      "trade_date": "2026-02-20",
+      "close": 97.83,
+      "sma_5": 94.766,
+      "momentum_5d": 0.072227,
+      "signal": "BUY"
+    },
+    {
+      "symbol": "MSFT",
+      "trade_date": "2026-02-20",
+      "close": 216.96,
+      "sma_5": 210.298,
+      "momentum_5d": 0.031277,
+      "signal": "BUY"
+    }
+  ],
+  "recent_runs": [
+    {
+      "run_id": "75beb2f447264c51a94ce860450bae8f",
+      "started_at": "2026-02-20T16:37:46.390683",
+      "finished_at": "2026-02-20T16:37:46.423896",
+      "status": "SUCCESS",
+      "rows_written": 122,
+      "error_message": null
+    }
+  ]
+}

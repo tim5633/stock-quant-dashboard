@@ -1,0 +1,17 @@
+app:
+  name: stock-quant-dashboard
+  timezone: Asia/Taipei
+
+pipeline:
+  symbols:
+    - AAPL
+    - MSFT
+  lookback_days: 40
+  snapshot_retention_days: 14
+
+schedule:
+  enabled: true
+  cron: "0 18 * * 1-5"
+
+output:
+  dashboard_json_path: "docs/data/latest.json"
