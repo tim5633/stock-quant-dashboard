@@ -1,113 +1,94 @@
 {
-  "run_id": "8708947734114fb38bcb3b8c127b36b3",
+  "run_id": "04503d55e872405bb7d45d6260a31b5d",
   "timezone": "Asia/Taipei",
   "details": {
-    "price_rows": 68,
-    "metric_rows": 68,
+    "price_rows": 160,
+    "metric_rows": 160,
+    "universe": "manual",
+    "symbol_count": 2,
     "source_by_symbol": {
-      "AAPL": "yahoo",
-      "MSFT": "yahoo"
+      "AAPL": "stooq",
+      "MSFT": "stooq"
+    },
+    "sector_by_symbol": {
+      "AAPL": "Manual",
+      "MSFT": "Manual"
     },
     "snapshot_rows": 2,
     "deleted_old_snapshots": 0
   },
-  "latest_metrics": [
+  "target_annual_return": 0.1,
+  "stock_table": [
     {
       "symbol": "AAPL",
+      "sector": "Manual",
+      "source": "stooq",
       "trade_date": "2026-02-20",
-      "close": 264.58,
-      "sma_5": 261.834,
-      "momentum_5d": 0.010889,
-      "signal": "BUY"
-    },
-    {
-      "symbol": "MSFT",
-      "trade_date": "2026-02-20",
-      "close": 397.23,
-      "sma_5": 398.694,
-      "momentum_5d": -0.011472,
-      "signal": "SELL"
-    }
-  ],
-  "long_term": [
-    {
-      "symbol": "AAPL",
-      "trade_date": "2026-02-20",
-      "close": 264.58,
-      "sma_60": 262.2955,
-      "sma_200": 264.5059,
-      "mom_60d": -0.044734,
-      "dist_52w_high": -0.075509,
-      "score": 30,
-      "signal": "SELL",
-      "source": "yahoo"
-    },
-    {
-      "symbol": "MSFT",
-      "trade_date": "2026-02-20",
-      "close": 397.23,
-      "sma_60": 450.1553,
-      "sma_200": 464.9963,
-      "mom_60d": -0.167215,
-      "dist_52w_high": -0.267198,
-      "score": 0,
-      "signal": "SELL",
-      "source": "yahoo"
-    }
-  ],
-  "mid_term": [
-    {
-      "symbol": "AAPL",
-      "trade_date": "2026-02-20",
-      "close": 264.58,
-      "sma_20": 257.267,
-      "sma_60": 262.2955,
-      "mom_20d": 0.066683,
-      "mom_5d": 0.034405,
-      "score": 78,
-      "signal": "BUY",
-      "source": "yahoo"
-    },
-    {
-      "symbol": "MSFT",
-      "trade_date": "2026-02-20",
-      "close": 397.23,
-      "sma_20": 408.541,
-      "sma_60": 450.1553,
-      "mom_20d": -0.147484,
-      "mom_5d": -0.010191,
-      "score": 0,
-      "signal": "SELL",
-      "source": "yahoo"
-    }
-  ],
-  "short_term": [
-    {
-      "symbol": "AAPL",
-      "trade_date": "2026-02-20",
-      "close": 264.58,
+      "current_price": 264.58,
+      "predicted_sell_price": 277.81,
+      "stop_loss_price": 216.96,
+      "take_profit_price": 292.36,
+      "expected_annual_return": 0.066928,
+      "short_score": 0,
+      "short_signal": "SELL",
       "sma_5": 229.228,
       "mom_1d": 0.01535,
       "mom_5d": 0.034405,
       "vol_10d": 0.63852,
-      "score": 0,
-      "signal": "BUY",
-      "source": "yahoo"
+      "mid_score": 74,
+      "mid_signal": "BUY",
+      "sma_20": 257.267,
+      "sma_60": 262.2955,
+      "mom_20d": 0.066683,
+      "long_score": 47,
+      "long_signal": "SELL",
+      "sma_200": 264.5059,
+      "mom_60d": -0.044734,
+      "dist_52w_high": -0.075509,
+      "total_score": 45
     },
     {
       "symbol": "MSFT",
+      "sector": "Manual",
+      "source": "stooq",
       "trade_date": "2026-02-20",
-      "close": 397.23,
+      "current_price": 397.23,
+      "predicted_sell_price": 417.09,
+      "stop_loss_price": 325.73,
+      "take_profit_price": 429.01,
+      "expected_annual_return": -0.35,
+      "short_score": 0,
+      "short_signal": "SELL",
       "sma_5": 359.312,
       "mom_1d": -0.003087,
       "mom_5d": -0.010191,
       "vol_10d": 0.350862,
-      "score": 0,
-      "signal": "SELL",
-      "source": "yahoo"
+      "mid_score": 0,
+      "mid_signal": "SELL",
+      "sma_20": 408.541,
+      "sma_60": 450.1553,
+      "mom_20d": -0.147484,
+      "long_score": 0,
+      "long_signal": "SELL",
+      "sma_200": 464.9963,
+      "mom_60d": -0.167215,
+      "dist_52w_high": -0.267198,
+      "total_score": 0
     }
   ],
+  "recommended_portfolio": [],
+  "sectors": [
+    "Manual"
+  ],
   "recent_runs": [
+    {
+      "run_id": "04503d55e872405bb7d45d6260a31b5d",
+      "started_at": "2026-02-20T23:57:14.086384",
+      "finished_at": "2026-02-20T23:57:16.527237",
+      "status": "SUCCESS",
+      "rows_written": 322,
+      "error_message": null
+    },
     {
       "run_id": "8708947734114fb38bcb3b8c127b36b3",
       "started_at": "2026-02-20T23:30:12.152701",

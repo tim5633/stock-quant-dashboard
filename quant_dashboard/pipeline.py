@@ -17,6 +17,7 @@ from quant_dashboard.jobs.fetch_data import fetch_market_data
 from quant_dashboard.jobs.persist import persist_price_data, persist_quant_metrics
 from quant_dashboard.jobs.run_quant import compute_quant_metrics
 from quant_dashboard.jobs.update_dashboard import refresh_dashboard_snapshot
+from quant_dashboard.universe import resolve_universe
 
 
 logger = logging.getLogger(__name__)
@@ -48,7 +49,8 @@ def run_pipeline(config: AppConfig) -> str:
         session.commit()
 
         try:
-            prices = fetch_market_data(config.symbols, config.lookback_days)
+            symbols, sector_by_symbol = resolve_universe(config)
+            prices = fetch_market_data(symbols, config.lookback_days)
             if not prices:
                 raise RuntimeError("No market data fetched from providers")
             metrics = compute_quant_metrics(prices)
@@ -63,7 +65,10 @@ def run_pipeline(config: AppConfig) -> str:
             details = {
                 "price_rows": price_rows,
                 "metric_rows": metric_rows,
+                "universe": config.universe,
+                "symbol_count": len(symbols),
                 "source_by_symbol": _latest_source_by_symbol(prices),
+                "sector_by_symbol": sector_by_symbol,
                 **snapshot_result,
             }
             record_run_finished(
@@ -79,6 +84,8 @@ def run_pipeline(config: AppConfig) -> str:
                 run_id=run_id,
                 details=details,
                 timezone=config.timezone,
+                target_annual_return=config.target_annual_return,
+                max_recommendations=config.max_recommendations,
             )
             session.commit()
             logger.info("run_id=%s status=SUCCESS details=%s", run_id, details)

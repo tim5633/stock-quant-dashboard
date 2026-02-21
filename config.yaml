@@ -3,11 +3,15 @@ app:
   timezone: Asia/Taipei
 
 pipeline:
+  universe: manual
   symbols:
     - AAPL
     - MSFT
+  max_symbols: 100
   lookback_days: 40
   snapshot_retention_days: 14
+  target_annual_return: 0.10
+  max_recommendations: 10
 
 schedule:
   enabled: true

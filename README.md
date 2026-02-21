@@ -9,6 +9,7 @@ Python 自動化更新量化資料，並把結果發布到 GitHub Pages。
 - `docs/`：GitHub Pages 靜態前端
 - `GitHub Actions`：定時執行 pipeline 並部署 Pages
 - 市場資料來源：Yahoo Finance（`yfinance`）
+- 失敗備援來源：Stooq
 
 ## 本地啟動
 
@@ -24,6 +25,16 @@ python main.py --once
 
 - SQLite DB：`data/quant.db`
 - 前端資料：`docs/data/latest.json`
+
+## 可調參數（`config.yaml`）
+
+- `pipeline.universe`：`manual` / `sp500` / `all_us`
+- `pipeline.symbols`：`manual` 模式用的自選股票
+- `pipeline.max_symbols`：最多抓幾檔（建議先 50~200）
+- `pipeline.target_annual_return`：組合目標年化（預設 0.10）
+- `pipeline.max_recommendations`：最多推薦幾檔（預設 10）
+
+`all_us` 可以實現，但一次全量抓很容易被資料源限流，建議先從 `sp500` 或先設較小 `max_symbols`。
 
 ## 部署到 GitHub Pages
 
